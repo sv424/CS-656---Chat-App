@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="codelab-friendlychat-android">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/codelab-friendlychat-android.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

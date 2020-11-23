@@ -1,0 +1,20 @@
+com/google/firebase/codelab/friendlychat/MainActivity.java
+ com.google.firebase.codelab.friendlychat.MainActivity
+ com.google.firebase.codelab.friendlychat.MainActivity$1
+ com.google.firebase.codelab.friendlychat.MainActivity$2
+ com.google.firebase.codelab.friendlychat.MainActivity$2$1
+ com.google.firebase.codelab.friendlychat.MainActivity$3
+ com.google.firebase.codelab.friendlychat.MainActivity$4
+ com.google.firebase.codelab.friendlychat.MainActivity$5
+ com.google.firebase.codelab.friendlychat.MainActivity$6
+ com.google.firebase.codelab.friendlychat.MainActivity$7
+ com.google.firebase.codelab.friendlychat.MainActivity$8
+ com.google.firebase.codelab.friendlychat.MainActivity$8$1
+ com.google.firebase.codelab.friendlychat.MainActivity$MessageViewHolder
+com/google/firebase/codelab/friendlychat/FriendlyMessage.java
+ com.google.firebase.codelab.friendlychat.FriendlyMessage
+com/google/firebase/codelab/friendlychat/SignInActivity.java
+ com.google.firebase.codelab.friendlychat.SignInActivity
+ com.google.firebase.codelab.friendlychat.SignInActivity$1
+com/google/firebase/codelab/friendlychat/BuildConfig.java
+ com.google.firebase.codelab.friendlychat.BuildConfig

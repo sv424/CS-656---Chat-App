@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "740887603387",
+    "firebase_url": "https://cs-656---chat-app.firebaseio.com",
+    "project_id": "cs-656---chat-app",
+    "storage_bucket": "cs-656---chat-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740887603387:android:9a5e27a5463c7cce28219e",
+        "android_client_info": {
+          "package_name": "com.google.firebase.codelab.friendlychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740887603387-rj744sha8orfu3ua8nph8dova8v8u419.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLXqmXlbUMulSvdYcbEHhkDdjcm3f-E84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740887603387-rj744sha8orfu3ua8nph8dova8v8u419.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

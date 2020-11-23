@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CS-656---Chat-App.iml" filepath="$PROJECT_DIR$/.idea/CS-656---Chat-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/build-android/CS-656---Chat-App.build-android.iml" filepath="$PROJECT_DIR$/.idea/modules/build-android/CS-656---Chat-App.build-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/build-android-start/CS-656---Chat-App.build-android-start.iml" filepath="$PROJECT_DIR$/.idea/modules/build-android-start/CS-656---Chat-App.build-android-start.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/build-android-start/app/CS-656---Chat-App.build-android-start.app.iml" filepath="$PROJECT_DIR$/.idea/modules/build-android-start/app/CS-656---Chat-App.build-android-start.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/build-android/app/CS-656---Chat-App.build-android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/build-android/app/CS-656---Chat-App.build-android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/grow-android-start/CS-656---Chat-App.grow-android-start.iml" filepath="$PROJECT_DIR$/.idea/modules/grow-android-start/CS-656---Chat-App.grow-android-start.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/grow-android-start/app/CS-656---Chat-App.grow-android-start.app.iml" filepath="$PROJECT_DIR$/.idea/modules/grow-android-start/app/CS-656---Chat-App.grow-android-start.app.iml" />
+    </modules>
+  </component>
+</project>
