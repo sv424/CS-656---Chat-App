@@ -1531,6 +1531,10 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id confirm_button
+id contact_1
+id contact_2
+id contact_3
+id contact_4
 id container
 id content
 id contentPanel
@@ -1819,6 +1823,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_sign_in
+layout contacts_menu
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1955,6 +1960,10 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string contact_1
+string contact_2
+string contact_3
+string contact_4
 string contacts_permission_rationale
 string default_web_client_id
 string error_icon_content_description

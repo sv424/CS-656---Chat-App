@@ -108,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter<FriendlyMessage, MessageViewHolder>
             mFirebaseAdapter;
 
+    String sessionUserName;
+    Session session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Set default username is anonymous.
         mUsername = ANONYMOUS;
+
+
+       // sessionUserName = session.getusername();
 
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
