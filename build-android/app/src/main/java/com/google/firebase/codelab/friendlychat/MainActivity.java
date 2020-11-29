@@ -80,6 +80,8 @@ import android.webkit.WebViewClient;
 
 import org.json.JSONObject;
 
+import java.util.Stack;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -154,16 +156,20 @@ public class MainActivity extends AppCompatActivity {
             mFirebaseAdapter;
 
     private Friend friend;
+    // TODO: Add code to get friend object from friend list.
 
     //PeerJS variables
     private static final String VIDEO_CALL = "VideoCall";
     private static final String VOICE_CALL = "VoiceCall";
-    private static final String ACCEPT_CALL = "Accept Call";
-    private static final String END_CALL = "End Call";
+    private static final String SEND_CALL = "SendCall";
+    private static final String ACCEPT_CALL = "AcceptCall";
+    private static final String END_CALL = "EndCall";
     private String[] voicePermissions = {Manifest.permission.RECORD_AUDIO};
     private String[] videoPermissions = {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO};
     private int requestCode = 1;
     private WebView webView;
+    private String callerID;
+    private boolean isVideoCall = false;
     public boolean isPeerConnected = false;
     private boolean micOn = true;
     private boolean camOn = true;
@@ -352,6 +358,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         //Call Ringing
         mCallRing = (RelativeLayout) findViewById(R.id.callRing);
         mIncomingCallTxt = (TextView) findViewById(R.id.incomingCallTxt);
@@ -359,6 +366,12 @@ public class MainActivity extends AppCompatActivity {
         mCallAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if( !isPermissionGranted( videoPermissions ) && isVideoCall ){
+                    askPermissions( videoPermissions );
+                }
+                else if( !isPermissionGranted( voicePermissions ) && !isVideoCall ){
+                    askPermissions( voicePermissions );
+                }
                 mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( ACCEPT_CALL );
             }
         });
@@ -413,8 +426,9 @@ public class MainActivity extends AppCompatActivity {
         mEndCallVoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                switchFromVoiceControls();
                 mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( END_CALL );
-                switchToMainActivity();
+
             }
         });
 
@@ -454,12 +468,14 @@ public class MainActivity extends AppCompatActivity {
         mEndCallVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( END_CALL );
+                switchFromVideoControls();
                 switchToMainActivity();
+                mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( END_CALL );
+
             }
         });
 
-
+        setupWebView();
     }
 
     @Override
@@ -580,17 +596,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendCallRequest( String type ){
-        setupWebView();
 
-        mFirebaseDatabaseReference.child( getActionsChild() + "/incoming" ).setValue( mFirebaseUser.getUid() );
+        isVideoCall = type.equals( VIDEO_CALL );
+
+        if( !isPermissionGranted( videoPermissions ) && isVideoCall ){
+            askPermissions( videoPermissions );
+        }
+        else if( !isPermissionGranted( voicePermissions ) && !isVideoCall ){
+            askPermissions( voicePermissions );
+        }
+
+        switchToSendingRing();
+
+        mFirebaseDatabaseReference.child( getActionsChild() + "/incoming" ).setValue( mFirebaseUser.getDisplayName() );
         mFirebaseDatabaseReference.child( getActionsChild() + "/callType" ).setValue( type );
+        mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).setValue( SEND_CALL );
         mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if ( snapshot.getValue().toString().equals( ACCEPT_CALL ) ) {
+                if ( snapshot.getValue() != null && snapshot.getValue().toString().equals( ACCEPT_CALL ) ) {
                     listenForPickup();
                 }
-                else if ( snapshot.getValue().toString().equals( END_CALL ) ) {
+                else if ( snapshot.getValue() != null && snapshot.getValue().toString().equals( END_CALL ) ) {
+                    switchFromSendingRing();
                     return;
                 }
             }
@@ -607,9 +635,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if( isVideoCall() ) switchToVideoControls();
-                listenForHangup();
-                callJavascriptFunction("javascript:startCall(\"" + friend.getFriendID() + "\")" );
+                if( snapshot.getValue() != null && snapshot.getValue().equals( ACCEPT_CALL ) ) {
+                    setMic(true);
+
+                    switchFromSendingRing();
+
+                    if (isVideoCall) {
+                        setCam(true);
+                        switchFromMainActivity();
+                        switchToVideoControls();
+                    } else {
+                        setCam(false);
+                        switchToVoiceControls();
+                    }
+
+                    listenForHangup();
+                    callJavascriptFunction("javascript:startCall(\"" + friend.getFriendID() + "\")" );
+                }
             }
 
             @Override
@@ -621,7 +663,7 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if( snapshot.getValue().equals( END_CALL ) )
+                if( snapshot.getValue() != null && snapshot.getValue().equals( END_CALL ) )
                     endCall();
             }
 
@@ -631,13 +673,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupWebView(){
-
-        if( !isPermissionGranted( videoPermissions ) && isVideoCall() ){
-            askPermissions( videoPermissions );
-        }
-        else if( !isPermissionGranted( voicePermissions ) && !isVideoCall() ){
-            askPermissions( voicePermissions );
-        }
 
         webView = new WebView(this);
         webView.setWebChromeClient((WebChromeClient)(new WebChromeClient() {
@@ -668,28 +703,52 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializePeer() {
         callJavascriptFunction("javascript:init(\"" + mFirebaseUser.getUid() + "\")");
-        mFirebaseDatabaseReference.child( getActionsChild() + "/incoming" ).addValueEventListener(new ValueEventListener() {
+        mFirebaseDatabaseReference.child( getActionsChild() ).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                onCallRequest();
+                if( snapshot.getValue() != null &&
+                        ( snapshot.child( "/action" ).getValue().toString() ).equals( SEND_CALL )) {
+                    isVideoCall = ( snapshot.child( "/callType" ).getValue().toString() ).equals( VIDEO_CALL );
+                    callerID = snapshot.child( "/incoming" ).getValue().toString();
+                    onCallRequest();
+                }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+
     }
 
     private void onCallRequest(){
-        mCallRing.setVisibility( View.VISIBLE );
-        mIncomingCallTxt.setText( (CharSequence) ( friend.getFriendName() + " is "+ ( isVideoCall() ? "video" : "voice" ) +" calling...") );
+        switchToReceivingRing();
+        mIncomingCallTxt.setText( (CharSequence) ( callerID + " is "+ ( isVideoCall ? "video" : "voice" ) + " calling...") );
+
+        listenForHangup();
 
         mCallAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                mFirebaseDatabaseReference.child( getActionsChild() + "/isAvailable" ).setValue( true );
+                mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).setValue( ACCEPT_CALL );
                 mCallRing.setVisibility( View.GONE );
-                switchToVideoControls();
+
+                setMic( true );
+                switchFromReceivingRing();
+
+                if( isVideoCall ) {
+                    setCam( true );
+                    switchFromMainActivity();
+                    switchToVideoControls();
+                }
+                else {
+                    setCam( false );
+                    switchToVoiceControls();
+                }
+
+                listenForHangup();
+
             }
         });
 
@@ -697,32 +756,72 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                mFirebaseDatabaseReference.child( getActionsChild() + "/caller" ).setValue( true );
+                mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).setValue( END_CALL );
                 mCallRing.setVisibility( View.GONE );
+                switchFromReceivingRing();
             }
         });
     }
 
     private void endCall(){
-        mFirebaseDatabaseReference.child( getActionsChild() ).setValue( null );
+        if( isVideoCall ) switchFromVideoControls();
+        else switchFromVoiceControls();
+
+        switchToMainActivity();
         webView.loadUrl("about:blank");
     }
 
     private void switchToVideoControls(){
-        mMessageRecyclerView.setVisibility( View.GONE );
-        mMessageInput.setVisibility( View.GONE );
-        mCallButtons.setVisibility( View.GONE );
-
         mCallVideoControl.setVisibility( View.VISIBLE );
     }
+
+    private void switchFromVideoControls(){
+        mCallVideoControl.setVisibility( View.GONE );
+    }
+
+    private void switchToVoiceControls(){
+        mCallVoiceControl.setVisibility( View.VISIBLE );
+    }
+
+    private void switchFromVoiceControls(){
+        mCallVoiceControl.setVisibility( View.GONE );
+    }
+
 
     private void switchToMainActivity(){
         mMessageRecyclerView.setVisibility( View.VISIBLE );
         mMessageInput.setVisibility( View.VISIBLE );
         mCallButtons.setVisibility( View.VISIBLE );
-
-        mCallVideoControl.setVisibility( View.GONE );
     }
+
+    private void switchFromMainActivity(){
+        mMessageRecyclerView.setVisibility( View.GONE );
+        mMessageInput.setVisibility( View.GONE );
+        mCallButtons.setVisibility( View.GONE );
+    }
+
+    private void switchToSendingRing(){
+        mCallAccept.setVisibility( View.GONE);
+        mCallRing.setVisibility( View.VISIBLE );
+        mCallButtons.setVisibility( View.GONE );
+    }
+
+    private void switchFromSendingRing(){
+        mCallAccept.setVisibility( View.VISIBLE);
+        mCallRing.setVisibility( View.GONE );
+        mCallButtons.setVisibility( View.VISIBLE );
+    }
+
+    private void switchToReceivingRing(){
+        mCallRing.setVisibility( View.VISIBLE );
+        mCallButtons.setVisibility( View.GONE );
+    }
+
+    private void switchFromReceivingRing(){
+        mCallRing.setVisibility( View.GONE );
+        mCallButtons.setVisibility( View.VISIBLE );
+    }
+
 
 
 
@@ -749,9 +848,6 @@ public class MainActivity extends AppCompatActivity {
         return "/" + ACTIONS_CHILD + "/" + sessionID;
     }
 
-    private boolean isVideoCall(){
-        return mFirebaseDatabaseReference.child( getActionsChild() + "/callType" ).getKey().equals( VIDEO_CALL );
-    }
 
     private void setMic( boolean b ){
         callJavascriptFunction( "javascript:toggleAudio(\"" + b + "\")" );
