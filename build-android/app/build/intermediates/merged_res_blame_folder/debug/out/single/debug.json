@@ -1,63 +1,83 @@
 [
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_account_circle_black_36dp.png.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_account_circle_black_36dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_account_circle_black_36dp.png.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xxhdpi\\ic_account_circle_black_36dp.png"
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xxxhdpi\\baseline_remove_circle_black_36dp.png"
     },
     {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_add_black_24dp.png.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_add_black_24dp.png"
     },
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_selector.xml.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable\\button_selector.xml"
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_remove_round.xml.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-anydpi-v26\\remove_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_remove_foreground.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxhdpi\\remove_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xxxhdpi\\remove_round.png"
     },
     {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sign_in.xml.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\layout\\activity_sign_in.xml"
     },
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_add_black_24dp.png.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xxhdpi\\ic_add_black_24dp.png"
-    },
-    {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_black_24dp.png.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-hdpi\\ic_add_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\remove_round.png"
     },
     {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\menu_main_menu.xml.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\menu\\main_menu.xml"
     },
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_black_24dp.png.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-mdpi\\ic_add_black_24dp.png"
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_remove.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxxhdpi\\remove.png"
     },
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_remove_foreground.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\remove_foreground.png"
     },
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_remove_foreground.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxxhdpi\\remove_foreground.png"
     },
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-hdpi\\baseline_remove_circle_black_36dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xhdpi\\remove_round.png"
     },
     {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_account_circle_black_36dp.png.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xhdpi\\ic_account_circle_black_36dp.png"
     },
     {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-mdpi\\baseline_remove_circle_black_36dp.png"
+    },
+    {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_message.xml.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\layout\\item_message.xml"
     },
     {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-hdpi\\remove_round.png"
+    },
+    {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add_black_24dp.png.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xhdpi\\ic_add_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xhdpi\\remove_round.png"
     },
     {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_account_circle_black_36dp.png.flat",
@@ -72,15 +92,87 @@
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-hdpi\\ic_account_circle_black_36dp.png"
     },
     {
-        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\layout_contacts_menu.xml.flat",
-        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\layout\\contacts_menu.xml"
-    },
-    {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_remove.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\remove.png"
+    },
+    {
         "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_remove.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-hdpi\\remove.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_account_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_account_circle_black_36dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-xhdpi\\baseline_remove_circle_black_36dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_remove_foreground.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-hdpi\\remove_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_remove.xml.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-anydpi-v26\\remove.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_selector.xml.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable\\button_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_remove.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xhdpi\\remove.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxhdpi\\remove_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-mdpi\\remove_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_black_24dp.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-mdpi\\ic_add_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\drawable-hdpi\\remove_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_remove_foreground.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xhdpi\\remove_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxxhdpi\\remove_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_remove.png.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\mipmap-xxhdpi\\remove.png"
+    },
+    {
+        "merged": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\layout_contacts_menu.xml.flat",
+        "source": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\src\\main\\res\\layout\\contacts_menu.xml"
     }
 ]

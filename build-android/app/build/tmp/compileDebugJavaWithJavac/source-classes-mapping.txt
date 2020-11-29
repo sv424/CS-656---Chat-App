@@ -15,11 +15,17 @@ com/google/firebase/codelab/friendlychat/Session.java
  com.google.firebase.codelab.friendlychat.Session
 com/google/firebase/codelab/friendlychat/FriendlyMessage.java
  com.google.firebase.codelab.friendlychat.FriendlyMessage
-com/google/firebase/codelab/friendlychat/BuildConfig.java
- com.google.firebase.codelab.friendlychat.BuildConfig
 com/google/firebase/codelab/friendlychat/SignInActivity.java
  com.google.firebase.codelab.friendlychat.SignInActivity
  com.google.firebase.codelab.friendlychat.SignInActivity$1
+com/google/firebase/codelab/friendlychat/BuildConfig.java
+ com.google.firebase.codelab.friendlychat.BuildConfig
 com/google/firebase/codelab/friendlychat/ContactsMenu.java
  com.google.firebase.codelab.friendlychat.ContactsMenu
+ com.google.firebase.codelab.friendlychat.ContactsMenu$1
+ com.google.firebase.codelab.friendlychat.ContactsMenu$2
+ com.google.firebase.codelab.friendlychat.ContactsMenu$3
+ com.google.firebase.codelab.friendlychat.ContactsMenu$4
  com.google.firebase.codelab.friendlychat.ContactsMenu$ContactsViewHolder
+com/google/firebase/codelab/friendlychat/Friend.java
+ com.google.firebase.codelab.friendlychat.Friend
