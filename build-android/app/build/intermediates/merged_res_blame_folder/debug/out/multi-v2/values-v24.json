@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Devanshi\\AndroidStudioProjects\\codelab-friendlychat-android\\build-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+            "outputFile": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Devanshi\\.gradle\\caches\\transforms-2\\files-2.1\\22378bd18a883fc1a091ee9ca5044217\\appcompat-1.2.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Gene\\.gradle\\caches\\transforms-2\\files-2.1\\22378bd18a883fc1a091ee9ca5044217\\appcompat-1.2.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Devanshi\\.gradle\\caches\\transforms-2\\files-2.1\\b2bc831517a04504ad6086c83384e309\\media-1.2.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Gene\\.gradle\\caches\\transforms-2\\files-2.1\\b2bc831517a04504ad6086c83384e309\\media-1.2.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

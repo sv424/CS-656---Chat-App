@@ -1,25 +1,49 @@
 com/google/firebase/codelab/friendlychat/MainActivity.java
  com.google.firebase.codelab.friendlychat.MainActivity
  com.google.firebase.codelab.friendlychat.MainActivity$1
+ com.google.firebase.codelab.friendlychat.MainActivity$10
+ com.google.firebase.codelab.friendlychat.MainActivity$11
+ com.google.firebase.codelab.friendlychat.MainActivity$12
+ com.google.firebase.codelab.friendlychat.MainActivity$13
+ com.google.firebase.codelab.friendlychat.MainActivity$14
+ com.google.firebase.codelab.friendlychat.MainActivity$15
+ com.google.firebase.codelab.friendlychat.MainActivity$16
+ com.google.firebase.codelab.friendlychat.MainActivity$17
+ com.google.firebase.codelab.friendlychat.MainActivity$18
+ com.google.firebase.codelab.friendlychat.MainActivity$19
+ com.google.firebase.codelab.friendlychat.MainActivity$19$1
  com.google.firebase.codelab.friendlychat.MainActivity$2
  com.google.firebase.codelab.friendlychat.MainActivity$2$1
+ com.google.firebase.codelab.friendlychat.MainActivity$20
+ com.google.firebase.codelab.friendlychat.MainActivity$21
+ com.google.firebase.codelab.friendlychat.MainActivity$22
+ com.google.firebase.codelab.friendlychat.MainActivity$23
+ com.google.firebase.codelab.friendlychat.MainActivity$24
+ com.google.firebase.codelab.friendlychat.MainActivity$25
+ com.google.firebase.codelab.friendlychat.MainActivity$26
+ com.google.firebase.codelab.friendlychat.MainActivity$27
+ com.google.firebase.codelab.friendlychat.MainActivity$28
  com.google.firebase.codelab.friendlychat.MainActivity$3
  com.google.firebase.codelab.friendlychat.MainActivity$4
  com.google.firebase.codelab.friendlychat.MainActivity$5
  com.google.firebase.codelab.friendlychat.MainActivity$6
  com.google.firebase.codelab.friendlychat.MainActivity$7
  com.google.firebase.codelab.friendlychat.MainActivity$8
- com.google.firebase.codelab.friendlychat.MainActivity$8$1
+ com.google.firebase.codelab.friendlychat.MainActivity$9
  com.google.firebase.codelab.friendlychat.MainActivity$MessageViewHolder
 com/google/firebase/codelab/friendlychat/Session.java
  com.google.firebase.codelab.friendlychat.Session
 com/google/firebase/codelab/friendlychat/FriendlyMessage.java
  com.google.firebase.codelab.friendlychat.FriendlyMessage
-com/google/firebase/codelab/friendlychat/BuildConfig.java
- com.google.firebase.codelab.friendlychat.BuildConfig
 com/google/firebase/codelab/friendlychat/SignInActivity.java
  com.google.firebase.codelab.friendlychat.SignInActivity
  com.google.firebase.codelab.friendlychat.SignInActivity$1
+com/google/firebase/codelab/friendlychat/BuildConfig.java
+ com.google.firebase.codelab.friendlychat.BuildConfig
 com/google/firebase/codelab/friendlychat/ContactsMenu.java
  com.google.firebase.codelab.friendlychat.ContactsMenu
  com.google.firebase.codelab.friendlychat.ContactsMenu$ContactsViewHolder
+com/google/firebase/codelab/friendlychat/JSInterface.java
+ com.google.firebase.codelab.friendlychat.JSInterface
+com/google/firebase/codelab/friendlychat/Friend.java
+ com.google.firebase.codelab.friendlychat.Friend

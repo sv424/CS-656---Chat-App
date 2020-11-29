@@ -15,8 +15,11 @@
  */
 package com.google.firebase.codelab.friendlychat;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -29,15 +32,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,6 +69,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.firebase.database.ValueEventListener;
+//import com.google.firebase.database.ktx.database;
+//import com.google.firebase.ktx.Firebase;
+
+import android.webkit.PermissionRequest;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -93,13 +112,39 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private GoogleSignInClient mSignInClient;
     private static final String MESSAGE_URL = "http://friendlychat.firebase.google.com/message/";
+    private String sessionID = "0";
 
+    public static final String FRIENDS_CHILD = "friends";
+    public static final String ACTIONS_CHILD = "action";
+
+    private LinearLayout mMessageInput;
     private Button mSendButton;
     private RecyclerView mMessageRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private ProgressBar mProgressBar;
     private EditText mMessageEditText;
     private ImageView mAddMessageImageView;
+
+    private RelativeLayout mCallRing;
+    private TextView mIncomingCallTxt;
+    private ImageView mCallAccept;
+    private ImageView mCallReject;
+
+    private RelativeLayout mCallButtons;
+    private ImageView mCallVoice;
+    private ImageView mCallVideo;
+
+    private RelativeLayout mCallVoiceControl;
+    private ImageView mToggleVoiceMic;
+    private ImageView mToggleVoiceSpk;
+    private ImageView mEndCallVoice;
+
+    private LinearLayout mCallVideoControl;
+    private ImageView mToggleVideoCam;
+    private ImageView mToggleVideoMic;
+    private ImageView mToggleVideoSpk;
+    private ImageView mEndCallVideo;
+
 
     // Firebase instance variables
     private FirebaseAuth mFirebaseAuth;
@@ -108,8 +153,21 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter<FriendlyMessage, MessageViewHolder>
             mFirebaseAdapter;
 
-    String sessionUserName;
-    Session session;
+    private Friend friend;
+
+    //PeerJS variables
+    private static final String VIDEO_CALL = "VideoCall";
+    private static final String VOICE_CALL = "VoiceCall";
+    private static final String ACCEPT_CALL = "Accept Call";
+    private static final String END_CALL = "End Call";
+    private String[] voicePermissions = {Manifest.permission.RECORD_AUDIO};
+    private String[] videoPermissions = {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO};
+    private int requestCode = 1;
+    private WebView webView;
+    public boolean isPeerConnected = false;
+    private boolean micOn = true;
+    private boolean camOn = true;
+    private boolean isMute = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         mSignInClient = GoogleSignIn.getClient(this, gso);
 
         // Initialize ProgressBar and RecyclerView.
+        mMessageInput = (LinearLayout) findViewById(R.id.messageInput);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mMessageRecyclerView = (RecyclerView) findViewById(R.id.messageRecyclerView);
         mLinearLayoutManager = new LinearLayoutManager(this);
@@ -162,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        DatabaseReference messagesRef = mFirebaseDatabaseReference.child(MESSAGES_CHILD);
+        DatabaseReference messagesRef = mFirebaseDatabaseReference.child( getMessagesChild() );
         FirebaseRecyclerOptions<FriendlyMessage> options =
                 new FirebaseRecyclerOptions.Builder<FriendlyMessage>()
                         .setQuery(messagesRef, parser)
@@ -275,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
                         mUsername,
                         mPhotoUrl,
                         null /* no image */);
-                mFirebaseDatabaseReference.child(MESSAGES_CHILD)
+                mFirebaseDatabaseReference.child( getMessagesChild() )
                         .push().setValue(friendlyMessage);
                 mMessageEditText.setText("");
             }
@@ -291,6 +350,116 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_IMAGE);
             }
         });
+
+
+        //Call Ringing
+        mCallRing = (RelativeLayout) findViewById(R.id.callRing);
+        mIncomingCallTxt = (TextView) findViewById(R.id.incomingCallTxt);
+        mCallAccept = (ImageView) findViewById(R.id.acceptBtn);
+        mCallAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( ACCEPT_CALL );
+            }
+        });
+        mCallReject = (ImageView) findViewById(R.id.rejectBtn);
+        mCallReject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( END_CALL );
+            }
+        });
+
+        //Send Call Buttons
+        mCallButtons = (RelativeLayout) findViewById(R.id.callButtons);
+        mCallVoice = (ImageView) findViewById(R.id.callVoiceBtn);
+        mCallVoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendCallRequest( VOICE_CALL );
+            }
+        });
+        mCallVideo = (ImageView) findViewById(R.id.callVideoBtn);
+        mCallVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendCallRequest( VIDEO_CALL );
+            }
+        });
+
+        //Voice Call Controls
+        mCallVoiceControl = (RelativeLayout) findViewById(R.id.callVoiceControl);
+        mToggleVoiceMic = (ImageView) findViewById(R.id.toggleVoiceMic);
+        mToggleVoiceMic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                micOn = !micOn;
+                setMic( micOn );
+                mToggleVoiceMic.setImageResource(
+                        micOn ? R.drawable.ic_baseline_mic_24 : R.drawable.ic_baseline_mic_off_24 );
+            }
+        });
+        mToggleVoiceSpk = (ImageView) findViewById(R.id.toggleVoiceSpk);
+        mToggleVoiceSpk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isMute = !isMute;
+                setSpk( isMute );
+                mToggleVoiceSpk.setImageResource(
+                        isMute ? R.drawable.ic_baseline_volume_up_24 : R.drawable.ic_baseline_volume_off_24 );
+            }
+        });
+        mEndCallVoice = (ImageView) findViewById(R.id.callVoiceEnd);
+        mEndCallVoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( END_CALL );
+                switchToMainActivity();
+            }
+        });
+
+        //Video Call Controls
+        mCallVideoControl = (LinearLayout) findViewById(R.id.callVideoControl);
+        mToggleVideoCam = (ImageView) findViewById(R.id.toggleVideoCamBtn);
+        mToggleVideoCam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                camOn = !camOn;
+                setCam( camOn );
+                mToggleVideoCam.setImageResource(
+                        camOn ? R.drawable.ic_baseline_videocam_24 : R.drawable.ic_baseline_videocam_off_24 );
+            }
+        });
+        mToggleVideoMic = (ImageView) findViewById(R.id.toggleVideoMicBtn);
+        mToggleVideoMic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                micOn = !micOn;
+                setMic( micOn );
+                mToggleVideoMic.setImageResource(
+                        micOn ? R.drawable.ic_baseline_mic_24 : R.drawable.ic_baseline_mic_off_24 );
+            }
+        });
+        mToggleVideoSpk = (ImageView) findViewById(R.id.toggleVideoSpkBtn);
+        mToggleVideoSpk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isMute = !isMute;
+                setSpk( isMute );
+                mToggleVideoSpk.setImageResource(
+                        isMute ? R.drawable.ic_baseline_volume_up_24 : R.drawable.ic_baseline_volume_off_24 );
+            }
+        });
+        mEndCallVideo = (ImageView) findViewById(R.id.callVideoEnd);
+        mEndCallVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFirebaseDatabaseReference.child( getActionsChild() + "/action").setValue( END_CALL );
+                switchToMainActivity();
+            }
+        });
+
+
     }
 
     @Override
@@ -314,6 +483,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
+        if( !webView.equals( null ) )
+            webView.loadUrl("about:blank");
         super.onDestroy();
     }
 
@@ -340,6 +511,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -353,7 +526,7 @@ public class MainActivity extends AppCompatActivity {
 
                     FriendlyMessage tempMessage = new FriendlyMessage(null, mUsername, mPhotoUrl,
                             LOADING_IMAGE_URL);
-                    mFirebaseDatabaseReference.child(MESSAGES_CHILD).push()
+                    mFirebaseDatabaseReference.child( getMessagesChild() ).push()
                             .setValue(tempMessage, new DatabaseReference.CompletionListener() {
                                 @Override
                                 public void onComplete(DatabaseError databaseError,
@@ -393,7 +566,7 @@ public class MainActivity extends AppCompatActivity {
                                                         FriendlyMessage friendlyMessage =
                                                                 new FriendlyMessage(null, mUsername, mPhotoUrl,
                                                                         task.getResult().toString());
-                                                        mFirebaseDatabaseReference.child(MESSAGES_CHILD).child(key)
+                                                        mFirebaseDatabaseReference.child( getMessagesChild() ).child(key)
                                                                 .setValue(friendlyMessage);
                                                     }
                                                 }
@@ -404,6 +577,206 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void sendCallRequest( String type ){
+        setupWebView();
+
+        mFirebaseDatabaseReference.child( getActionsChild() + "/incoming" ).setValue( mFirebaseUser.getUid() );
+        mFirebaseDatabaseReference.child( getActionsChild() + "/callType" ).setValue( type );
+        mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if ( snapshot.getValue().toString().equals( ACCEPT_CALL ) ) {
+                    listenForPickup();
+                }
+                else if ( snapshot.getValue().toString().equals( END_CALL ) ) {
+                    return;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+
+
+    private void listenForPickup(){
+        mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if( isVideoCall() ) switchToVideoControls();
+                listenForHangup();
+                callJavascriptFunction("javascript:startCall(\"" + friend.getFriendID() + "\")" );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    private void listenForHangup(){
+        mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if( snapshot.getValue().equals( END_CALL ) )
+                    endCall();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    private void setupWebView(){
+
+        if( !isPermissionGranted( videoPermissions ) && isVideoCall() ){
+            askPermissions( videoPermissions );
+        }
+        else if( !isPermissionGranted( voicePermissions ) && !isVideoCall() ){
+            askPermissions( voicePermissions );
+        }
+
+        webView = new WebView(this);
+        webView.setWebChromeClient((WebChromeClient)(new WebChromeClient() {
+            public void onPermissionRequest(@Nullable PermissionRequest request) {
+                if (request != null) {
+                    request.grant(request.getResources());
+                }
+            }
+        }));
+        webView.getSettings().setJavaScriptEnabled( true );
+        webView.getSettings().setMediaPlaybackRequiresUserGesture( false );
+        webView.addJavascriptInterface( new JSInterface(this), "Android");
+
+        loadCall();
+
+    }
+
+    private void loadCall() {
+        String filePath = "file:android_asset/call.html";
+        webView.loadUrl(filePath);
+
+        webView.setWebViewClient((WebViewClient)(new WebViewClient() {
+            public void onPageFinished(@Nullable WebView view, @Nullable String url) {
+                MainActivity.this.initializePeer();
+            }
+        }));
+    }
+
+    private void initializePeer() {
+        callJavascriptFunction("javascript:init(\"" + mFirebaseUser.getUid() + "\")");
+        mFirebaseDatabaseReference.child( getActionsChild() + "/incoming" ).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                onCallRequest();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+    private void onCallRequest(){
+        mCallRing.setVisibility( View.VISIBLE );
+        mIncomingCallTxt.setText( (CharSequence) ( friend.getFriendName() + " is "+ ( isVideoCall() ? "video" : "voice" ) +" calling...") );
+
+        mCallAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mFirebaseDatabaseReference.child( getActionsChild() + "/isAvailable" ).setValue( true );
+                mCallRing.setVisibility( View.GONE );
+                switchToVideoControls();
+            }
+        });
+
+        mCallReject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mFirebaseDatabaseReference.child( getActionsChild() + "/caller" ).setValue( true );
+                mCallRing.setVisibility( View.GONE );
+            }
+        });
+    }
+
+    private void endCall(){
+        mFirebaseDatabaseReference.child( getActionsChild() ).setValue( null );
+        webView.loadUrl("about:blank");
+    }
+
+    private void switchToVideoControls(){
+        mMessageRecyclerView.setVisibility( View.GONE );
+        mMessageInput.setVisibility( View.GONE );
+        mCallButtons.setVisibility( View.GONE );
+
+        mCallVideoControl.setVisibility( View.VISIBLE );
+    }
+
+    private void switchToMainActivity(){
+        mMessageRecyclerView.setVisibility( View.VISIBLE );
+        mMessageInput.setVisibility( View.VISIBLE );
+        mCallButtons.setVisibility( View.VISIBLE );
+
+        mCallVideoControl.setVisibility( View.GONE );
+    }
+
+
+
+    private void callJavascriptFunction( final String functionString) {
+        webView.post(new Runnable() {
+            String s = functionString;
+            @Override
+            public void run() {
+                webView.evaluateJavascript( s, null);
+            }
+        });
+
+    }
+
+    public void onPeerConnected() {
+        isPeerConnected = true;
+    }
+
+    private String getMessagesChild(){
+        return "/" + MESSAGES_CHILD + "/" + sessionID;
+    }
+
+    private String getActionsChild(){
+        return "/" + ACTIONS_CHILD + "/" + sessionID;
+    }
+
+    private boolean isVideoCall(){
+        return mFirebaseDatabaseReference.child( getActionsChild() + "/callType" ).getKey().equals( VIDEO_CALL );
+    }
+
+    private void setMic( boolean b ){
+        callJavascriptFunction( "javascript:toggleAudio(\"" + b + "\")" );
+    }
+
+    private void setCam( boolean b ){
+        callJavascriptFunction( "javascript:toggleVideo(\"" + b + "\")" );
+    }
+
+    private void setSpk( boolean b ){
+        callJavascriptFunction( "javascript:mute(\"" + b + "\")" );
+    }
+
+    private void askPermissions( String[] permissions ){
+        ActivityCompat.requestPermissions( this, permissions, requestCode );
+
+    }
+    private boolean isPermissionGranted( String[] permissions ){
+        for( String permission: permissions){
+            if( ActivityCompat.checkSelfPermission( this, permission ) != PackageManager.PERMISSION_GRANTED ){
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }
