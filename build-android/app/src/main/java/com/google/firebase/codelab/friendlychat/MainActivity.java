@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
     private int requestCode = 1;
     private WebView webView;
     private String callerID;
+    private String callerUserID;
     private boolean isVideoCall = false;
     public boolean isPeerConnected = false;
     private boolean micOn = true;
@@ -609,6 +610,7 @@ public class MainActivity extends AppCompatActivity {
         switchToSendingRing();
 
         mFirebaseDatabaseReference.child( getActionsChild() + "/incoming" ).setValue( mFirebaseUser.getDisplayName() );
+        mFirebaseDatabaseReference.child( getActionsChild() + "/userID" ).setValue( mFirebaseUser.getUid() );
         mFirebaseDatabaseReference.child( getActionsChild() + "/callType" ).setValue( type );
         mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).setValue( SEND_CALL );
         mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).addValueEventListener( new ValueEventListener() {
@@ -631,11 +633,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void listenForPickup(){
-        mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).addValueEventListener(new ValueEventListener() {
+        mFirebaseDatabaseReference.child( getActionsChild() ).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if( snapshot.getValue() != null && snapshot.getValue().equals( ACCEPT_CALL ) ) {
+                if( snapshot.child( "/action" ).getValue() != null &&
+                        snapshot.child( "/userID" ).getValue() != null &&
+                        snapshot.child( "/action" ).getValue().equals( ACCEPT_CALL ) ) {
+
+                    callerUserID = snapshot.child( "/userID" ).getValue().toString();
                     setMic(true);
 
                     switchFromSendingRing();
@@ -650,7 +656,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     listenForHangup();
-                    callJavascriptFunction("javascript:startCall(\"" + friend.getFriendID() + "\")" );
+                    callJavascriptFunction("javascript:startCall(\"" + callerUserID + "\")" );
                 }
             }
 
@@ -706,11 +712,16 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseDatabaseReference.child( getActionsChild() ).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if( snapshot.getValue() != null &&
+                if( snapshot.child( "/callType" ).getValue() != null &&
+                        snapshot.child( "/incoming" ).getValue() != null &&
+                        snapshot.child( "/userID" ).getValue() != null &&
                         ( snapshot.child( "/action" ).getValue().toString() ).equals( SEND_CALL )) {
+
                     isVideoCall = ( snapshot.child( "/callType" ).getValue().toString() ).equals( VIDEO_CALL );
                     callerID = snapshot.child( "/incoming" ).getValue().toString();
+                    callerUserID = snapshot.child( "/userID" ).getValue().toString();
                     onCallRequest();
+
                 }
 
             }
@@ -732,6 +743,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 mFirebaseDatabaseReference.child( getActionsChild() + "/action" ).setValue( ACCEPT_CALL );
+                mFirebaseDatabaseReference.child( getActionsChild() + "/userID").setValue( mFirebaseUser.getUid() );
                 mCallRing.setVisibility( View.GONE );
 
                 setMic( true );
@@ -764,11 +776,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void endCall(){
+        //finish();
+
         if( isVideoCall ) switchFromVideoControls();
         else switchFromVoiceControls();
 
+        callerID = "";
+        callerUserID="";
+
         switchToMainActivity();
-        webView.loadUrl("about:blank");
+        //webView.loadUrl("about:blank");
     }
 
     private void switchToVideoControls(){

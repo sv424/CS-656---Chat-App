@@ -10,7 +10,7 @@ remoteVideo.onplaying = () => { remoteVideo.style.opacity = 1 }
 let peer
 function init(userId) {
     peer = new Peer(userId, {
-        host: '192.168.43.242',
+        host: '192.168.1.243',
         port: 9000,
         path: '/videocallapp'
     })
