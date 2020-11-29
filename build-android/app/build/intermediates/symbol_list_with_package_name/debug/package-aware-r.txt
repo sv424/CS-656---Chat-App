@@ -1436,7 +1436,6 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable remove_round
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1915,7 +1914,6 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu main_menu
 mipmap ic_launcher
-mipmap remove
 mipmap remove_foreground
 mipmap remove_round
 plurals mtrl_badge_content_description

@@ -55,10 +55,10 @@ public class ContactsMenu extends AppCompatActivity implements View.OnClickListe
     private GoogleSignInClient mSignInClient;
     public static final String FRIENDS_CHILD = "friends";
 
-    private  ImageButton remove_contact1;
-    private  ImageButton remove_contact2;
-    private  ImageButton remove_contact3;
-    private  ImageButton remove_contact4;
+    private  Button remove_contact1;
+    private  Button remove_contact2;
+    private  Button remove_contact3;
+    private  Button remove_contact4;
 
     private Button contact_1;
     private Button contact_2;
@@ -167,7 +167,7 @@ public class ContactsMenu extends AppCompatActivity implements View.OnClickListe
         remove_contact1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                messengerImageView1 = (ImageView) findViewById(R.id.messengerImageView1);
+                messengerImageView1 = findViewById(R.id.messengerImageView1);
                 messengerImageView1.setVisibility(View.INVISIBLE);
                 contact_1.setVisibility(View.INVISIBLE);
                 usersRef.child("contact1").removeValue();
@@ -180,7 +180,7 @@ public class ContactsMenu extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onClick(View v) {
-                messengerImageView2 = (ImageView) findViewById(R.id.messengerImageView2);
+                messengerImageView2 = findViewById(R.id.messengerImageView2);
                 messengerImageView2.setVisibility((View.INVISIBLE));
                 contact_2.setVisibility(View.INVISIBLE);
                 usersRef.child("contact2").removeValue();
@@ -193,7 +193,7 @@ public class ContactsMenu extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onClick(View v) {
-                messengerImageView3 = (ImageView) findViewById(R.id.messengerImageView3);
+                messengerImageView3 = findViewById(R.id.messengerImageView3);
                 messengerImageView3.setVisibility((View.INVISIBLE));
                 contact_3.setVisibility(View.INVISIBLE);
                 usersRef.child("contact3").removeValue();
@@ -206,7 +206,7 @@ public class ContactsMenu extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onClick(View v) {
-                messengerImageView4 = (ImageView) findViewById(R.id.messengerImageView4);
+                messengerImageView4 = findViewById(R.id.messengerImageView4);
                 messengerImageView4.setVisibility((View.INVISIBLE));
                 contact_4.setVisibility(View.INVISIBLE);
                 usersRef.child("contact4").removeValue();

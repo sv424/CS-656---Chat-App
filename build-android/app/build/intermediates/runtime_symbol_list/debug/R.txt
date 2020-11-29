@@ -1435,10 +1435,9 @@ int drawable notification_template_icon_bg 0x7f0700a2
 int drawable notification_template_icon_low_bg 0x7f0700a3
 int drawable notification_tile_bg 0x7f0700a4
 int drawable notify_panel_notification_icon_bg 0x7f0700a5
-int drawable remove_round 0x7f0700a6
-int drawable test_custom_background 0x7f0700a7
-int drawable tooltip_frame_dark 0x7f0700a8
-int drawable tooltip_frame_light 0x7f0700a9
+int drawable test_custom_background 0x7f0700a6
+int drawable tooltip_frame_dark 0x7f0700a7
+int drawable tooltip_frame_light 0x7f0700a8
 int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
@@ -1914,9 +1913,8 @@ int layout text_view_with_theme_line_height 0x7f0b006b
 int layout text_view_without_line_height 0x7f0b006c
 int menu main_menu 0x7f0c0000
 int mipmap ic_launcher 0x7f0d0000
-int mipmap remove 0x7f0d0001
-int mipmap remove_foreground 0x7f0d0002
-int mipmap remove_round 0x7f0d0003
+int mipmap remove_foreground 0x7f0d0001
+int mipmap remove_round 0x7f0d0002
 int plurals mtrl_badge_content_description 0x7f0e0000
 int string abc_action_bar_home_description 0x7f0f0000
 int string abc_action_bar_up_description 0x7f0f0001
