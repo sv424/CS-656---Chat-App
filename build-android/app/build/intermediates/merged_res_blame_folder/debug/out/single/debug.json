@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_videocam_off_24.xml.flat",
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable\\ic_baseline_videocam_off_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_volume_off_24.xml.flat",
@@ -16,8 +16,20 @@
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable\\ic_baseline_video_call_24.xml"
     },
     {
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-xxxhdpi\\baseline_remove_circle_black_36dp.png"
+    },
+    {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\layout_contacts_menu.xml.flat",
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\layout\\contacts_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-mdpi\\baseline_remove_circle_black_36dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-xhdpi\\baseline_remove_circle_black_36dp.png"
     },
     {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_black_24dp.png.flat",
@@ -32,10 +44,6 @@
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable\\ic_baseline_call_reject_24.xml"
     },
     {
-        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_add_black_24dp.png.flat",
-        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-xxhdpi\\ic_add_black_24dp.png"
-    },
-    {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_account_circle_black_36dp.png.flat",
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_account_circle_black_36dp.png"
     },
@@ -44,8 +52,16 @@
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable\\ic_baseline_call_24.xml"
     },
     {
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_baseline_remove_circle_black_36dp.png.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-hdpi\\baseline_remove_circle_black_36dp.png"
+    },
+    {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_black_24dp.png.flat",
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-mdpi\\ic_add_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_remove_round.png.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\mipmap-xxxhdpi\\remove_round.png"
     },
     {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_mic_off_24.xml.flat",
@@ -64,8 +80,8 @@
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-mdpi\\ic_account_circle_black_36dp.png"
     },
     {
-        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_account_circle_black_36dp.png.flat",
-        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable-xxhdpi\\ic_account_circle_black_36dp.png"
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_remove_foreground.png.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\mipmap-xxxhdpi\\remove_foreground.png"
     },
     {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_account_circle_black_36dp.png.flat",

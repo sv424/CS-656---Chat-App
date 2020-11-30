@@ -10,31 +10,28 @@ public class Friend {
     private String photoURL;
     private String sessionID;
 
-    public Friend( FirebaseUser user ){
-        this.id = user.getUid();
-        this.name = user.getDisplayName();
-        if (user.getPhotoUrl() != null) { this.photoURL = user.getPhotoUrl().toString(); }
-        this.sessionID = null;
+    public Friend( String friendId, String friendName, String sessionID ){
+        this.id = friendId;
+        this.name = friendName;
+        this.sessionID = sessionID;
     }
 
-    public String getFriendID(){
-        return this.id;
+    public void setId(String id) {
+        this.id = id;
+    }
+    public String getFriendId()
+    {
+        return id;
     }
 
-    public String getFriendName(){
-        return this.name;
+    public String getFriendName()
+    {
+        return name;
     }
 
-    public String getPhotoURL(){
-        return this.photoURL;
-    }
-
-    public String getSessionID(){
-        return this.sessionID;
-    }
-
-    public void setSessionID( String s ){
-        this.sessionID = s;
+    public String getSessionID()
+    {
+       return sessionID;
     }
 
 }

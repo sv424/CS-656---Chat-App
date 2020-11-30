@@ -913,6 +913,7 @@ color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
 color radiobutton_themeable_attribute_color
+color remove_background
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -1363,6 +1364,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable baseline_remove_circle_black_36dp
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1628,6 +1630,10 @@ id messageInput
 id messageRecyclerView
 id messageTextView
 id messengerImageView
+id messengerImageView1
+id messengerImageView2
+id messengerImageView3
+id messengerImageView4
 id messengerTextView
 id middle
 id mini
@@ -1681,6 +1687,10 @@ id progress_circular
 id progress_horizontal
 id radio
 id rejectBtn
+id remove_contact_1
+id remove_contact_2
+id remove_contact_3
+id remove_contact_4
 id right
 id right_icon
 id right_side
@@ -1934,6 +1944,8 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu main_menu
 mipmap ic_launcher
+mipmap remove_foreground
+mipmap remove_round
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description

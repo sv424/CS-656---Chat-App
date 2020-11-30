@@ -42,6 +42,10 @@ com/google/firebase/codelab/friendlychat/BuildConfig.java
  com.google.firebase.codelab.friendlychat.BuildConfig
 com/google/firebase/codelab/friendlychat/ContactsMenu.java
  com.google.firebase.codelab.friendlychat.ContactsMenu
+ com.google.firebase.codelab.friendlychat.ContactsMenu$1
+ com.google.firebase.codelab.friendlychat.ContactsMenu$2
+ com.google.firebase.codelab.friendlychat.ContactsMenu$3
+ com.google.firebase.codelab.friendlychat.ContactsMenu$4
  com.google.firebase.codelab.friendlychat.ContactsMenu$ContactsViewHolder
 com/google/firebase/codelab/friendlychat/JSInterface.java
  com.google.firebase.codelab.friendlychat.JSInterface
