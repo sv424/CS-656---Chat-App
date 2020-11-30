@@ -642,9 +642,13 @@ public class MainActivity extends AppCompatActivity {
                         snapshot.child( "/action" ).getValue().equals( ACCEPT_CALL ) ) {
 
                     callerUserID = snapshot.child( "/userID" ).getValue().toString();
-                    setMic(true);
 
                     switchFromSendingRing();
+
+                    listenForHangup();
+                    callJavascriptFunction("javascript:startCall(\"" + callerUserID + "\")" );
+
+                    setMic(true);
 
                     if (isVideoCall) {
                         setCam(true);
@@ -655,8 +659,6 @@ public class MainActivity extends AppCompatActivity {
                         switchToVoiceControls();
                     }
 
-                    listenForHangup();
-                    callJavascriptFunction("javascript:startCall(\"" + callerUserID + "\")" );
                 }
             }
 
@@ -680,7 +682,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupWebView(){
 
-        webView = new WebView(this);
+        webView = (WebView) findViewById(R.id.webView);
         webView.setWebChromeClient((WebChromeClient)(new WebChromeClient() {
             public void onPermissionRequest(@Nullable PermissionRequest request) {
                 if (request != null) {
@@ -776,31 +778,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void endCall(){
-        //finish();
 
         if( isVideoCall ) switchFromVideoControls();
         else switchFromVoiceControls();
+        switchToMainActivity();
+
+        callJavascriptFunction( "javascript:endCall()" );
 
         callerID = "";
         callerUserID="";
 
-        switchToMainActivity();
-        //webView.loadUrl("about:blank");
     }
 
     private void switchToVideoControls(){
+        webView.setVisibility( View.VISIBLE );
         mCallVideoControl.setVisibility( View.VISIBLE );
     }
 
     private void switchFromVideoControls(){
+        webView.setVisibility( View.GONE );
         mCallVideoControl.setVisibility( View.GONE );
     }
 
     private void switchToVoiceControls(){
+
         mCallVoiceControl.setVisibility( View.VISIBLE );
     }
 
     private void switchFromVoiceControls(){
+
         mCallVoiceControl.setVisibility( View.GONE );
     }
 

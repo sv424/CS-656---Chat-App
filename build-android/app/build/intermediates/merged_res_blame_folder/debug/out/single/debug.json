@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_videocam_off_24.xml.flat",
-        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable\\ic_baseline_videocam_off_24.xml"
-    },
-    {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_videocam_off_24.xml.flat",
+        "source": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\src\\main\\res\\drawable\\ic_baseline_videocam_off_24.xml"
     },
     {
         "merged": "C:\\Users\\Gene\\Documents\\GitHub\\CS-656---Chat-App\\build-android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_volume_off_24.xml.flat",

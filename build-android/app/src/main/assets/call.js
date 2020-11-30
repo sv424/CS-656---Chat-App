@@ -67,6 +67,10 @@ function startCall(otherUserId) {
     })
 }
 
+function endCall(otherUserId){
+    DataConnection.close()
+}
+
 function toggleVideo(b) {
     if (b == "true") {
         localStream.getVideoTracks()[0].enabled = true
