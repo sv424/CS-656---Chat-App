@@ -23,6 +23,7 @@ function init(userId) {
 }
 
 let localStream
+let connStream
 function listen() {
     peer.on('call', (call) => {
 
@@ -57,6 +58,7 @@ function startCall(otherUserId) {
         localStream = stream
 
         const call = peer.call(otherUserId, stream)
+        connStream = call
         call.on('stream', (remoteStream) => {
             remoteVideo.srcObject = remoteStream
 
@@ -67,8 +69,8 @@ function startCall(otherUserId) {
     })
 }
 
-function endCall(otherUserId){
-    DataConnection.close()
+function endCall(){
+    connStream.close()
 }
 
 function toggleVideo(b) {

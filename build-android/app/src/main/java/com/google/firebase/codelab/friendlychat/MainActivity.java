@@ -783,11 +783,12 @@ public class MainActivity extends AppCompatActivity {
         else switchFromVoiceControls();
         switchToMainActivity();
 
-        callJavascriptFunction( "javascript:endCall()" );
-
         callerID = "";
         callerUserID="";
 
+        webView.loadUrl("about:blank");
+        loadCall();
+        //callJavascriptFunction( "javascript:endCall()" );
     }
 
     private void switchToVideoControls(){
